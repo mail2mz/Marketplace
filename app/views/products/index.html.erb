@@ -1,0 +1,23 @@
+
+<h1>Listing products</h1>
+
+<%= link_to 'New product', new_product_path %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Count</th>
+    <th></th>
+  </tr>
+ 
+  <% @products.select {|p| p.price > 200 }.each do |product|%>
+    <tr>
+      <td><%= product.title %></td>
+      <td><%= product.price %></td>
+      <td><%= product.count %></td>
+      <td><%= link_to 'Show', product_path(product) %></td>
+      <td><%= link_to 'Reserve', edit_product_path(product) %></td>
+    </tr>
+  <% end %>
+</table>
